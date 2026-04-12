@@ -113,6 +113,8 @@ def main():
     for c in cnf[:10]:
         print(c) 
 
+    print("Done!")
+
 if __name__ == "__main__":
     main()
     run_all_tests()
