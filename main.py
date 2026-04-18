@@ -1,7 +1,7 @@
 from parser import read_input, validate_input
-from solver import is_valid, solve, get_domain, solve_astar, init_domains, forward_chaining, backward_query
+from solver import is_valid, solve, get_domain, solve_astar, init_domains, forward_chaining, backward_query, brute_force
 from cnf import generate_cnf
-import os
+import os, time
 
 def print_solution(grid, h, v, N):
     for i in range(N):
@@ -115,6 +115,17 @@ def main():
 
     print("Done!")
 
+    start = time.perf_counter()
+    solve(grid, h, v, N)
+    end = time.perf_counter()
+    print(f"Backtracking time: {end - start:.6f}")
+
+    start = time.perf_counter()
+    brute_force(grid, N)
+    end = time.perf_counter()
+    print(f"Brute-force time: {end - start:6f}")
+
 if __name__ == "__main__":
     main()
     run_all_tests()
+    os.system("python chart.py")

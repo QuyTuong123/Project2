@@ -221,3 +221,31 @@ def solve(grid, h, v, N):
                 return True
         grid[i][j] = 0
     return False
+
+def brute_force(grid, N):
+    for i in range(N):
+        for j in range(N):
+            if grid[i][j] == 0:
+                for val in range(1, N+1):
+                    grid[i][j] = val
+                    if brute_force(grid, N):
+                        return True
+                    
+                    grid[i][j] = 0
+                return False
+    return check_full(grid, N)
+
+
+def check_full(grid, N):
+    # check row
+    for i in range(N):
+        if len(set(grid[i])) != N:
+            return False
+
+    # check column
+    for j in range(N):
+        col = [grid[i][j] for i in range(N)]
+        if len(set(col)) != N:
+            return False
+
+    return True

@@ -51,7 +51,7 @@ def col_uniqueness(N):
                     ])
     return clauses
 
-# A5 - horizontal constraints
+# A6 - horizontal constraints
 def horizontal_constraints(h, N):
     clauses = []
     for i in range(N):
